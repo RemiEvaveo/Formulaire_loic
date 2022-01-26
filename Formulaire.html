@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center"> QUESTIONNAIRE</h1>
+    <div class="mt-5">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rhoncus quis nibh vitae interdum.
+            </label>
+        </div>
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+                Suspendisse luctus vel quam nec varius.
+            </label>
+        </div>
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+            <label class="form-check-label" for="flexRadioDefault3">
+                Quisque dapibus sapien est, nec auctor nibh pretium sit amet.
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </div>
+  <div class="alert alert-success mt-5 d-none" role="alert" id="right">
+    Bonne Réponse
+  </div>
+  <div class="alert alert-danger mt-5 d-none" role="alert" id="wrong">
+    Mauvaise Réponse
+  </div>
+</div>
+</body>
+</html>
+
+
+<script>
+const button = document.querySelector('button')
+button.addEventListener('click',event => {
+  console.log('click')
+  const rightAnswer =  document.getElementById("flexRadioDefault2")
+  if(rightAnswer.checked){
+    document.getElementById("right").classList.remove('d-none')
+    document.getElementById("wrong").classList.add('d-none')
+    const labels = document.querySelectorAll('label')
+    labels.forEach(label => {
+      const inputForLabel = document.getElementById(label.htmlFor)
+      if(inputForLabel.checked){
+        label.classList.add('text-success')
+      }else{
+        label.classList.remove('text-danger')
+        label.classList.remove('text-success')
+      }
+    })
+  }else{
+    document.getElementById("right").classList.add('d-none')
+    document.getElementById("wrong").classList.remove('d-none')
+    const labels = document.querySelectorAll('label')
+    labels.forEach(label => {
+      const inputForLabel = document.getElementById(label.htmlFor)
+      if(inputForLabel.checked){
+        label.classList.add('text-danger')
+      }else{
+        label.classList.remove('text-danger')
+        label.classList.remove('text-success')
+      }
+    })
+  }
+
+})
+</script>
